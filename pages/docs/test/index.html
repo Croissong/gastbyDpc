@@ -1,0 +1,339 @@
+<title>Datenbank erstellen</title>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Datenbank löschen, erstellen &amp; auswählen</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">DROP</span> DATABASE IF <span style="color: #490026; font-weight: bold;">EXISTS</span> hotelbuchung;
+<span style="color: #490026; font-weight: bold;">CREATE</span> DATABASE hotelbuchung;
+USE hotelbuchung;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Tabellen erstellen &amp; befüllen</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Gast-Tabelle erstellen</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> <span style="color: #340557; font-weight: bold;">gast</span>(
+        gast_id <span style="color: #014500;">INT</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>, 
+        anrede <span style="color: #014500;">VARCHAR</span>(15),
+        vorname <span style="color: #014500;">VARCHAR</span>(45),
+        nachname <span style="color: #014500;">VARCHAR</span>(45));
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">Daten</h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> gast (anrede, vorname, nachname) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">'Herr'</span>, <span style="color: #0f126e;">'Max'</span>, <span style="color: #0f126e;">'Mustermann'</span>),
+(<span style="color: #0f126e;">'Herr'</span>, <span style="color: #0f126e;">'Hans'</span>, <span style="color: #0f126e;">'Peter'</span>),
+(<span style="color: #0f126e;">'Frau'</span>, <span style="color: #0f126e;">'Lisa'</span>, <span style="color: #0f126e;">'Langfinger'</span>);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Gast-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-left">Anrede</th>
+<th scope="col" class="org-left">Vorname</th>
+<th scope="col" class="org-left">Nachname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Herr</td>
+<td class="org-left">Max</td>
+<td class="org-left">Mustermann</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Herr</td>
+<td class="org-left">Hans</td>
+<td class="org-left">Peter</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Frau</td>
+<td class="org-left">Lisa</td>
+<td class="org-left">Langfinger</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Zimmer-Tabelle erstellen</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">zimmer</span> (
+        zimmer_id <span style="color: #014500;">INT</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        room_number <span style="color: #014500;">VARCHAR</span>(15),
+        beschreibung <span style="color: #014500;">VARCHAR</span>(45));
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">Mit Daten befüllen</h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> zimmer (room_number, beschreibung) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(1, <span style="color: #0f126e;">'Einzelzimmer'</span>),
+(2, <span style="color: #0f126e;">'Einzelzimmer'</span>),
+(3, <span style="color: #0f126e;">'Doppelzimmer'</span>);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Zimmer-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-right">Zimmernummer</th>
+<th scope="col" class="org-left">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-left">Einzelzimmer</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+<td class="org-left">Einzelzimmer</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">3</td>
+<td class="org-left">Doppelzimmer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Status-Tabelle</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">status</span> (
+        status_id <span style="color: #014500;">INT</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        title <span style="color: #014500;">VARCHAR</span>(45),
+        color <span style="color: #014500;">VARCHAR</span>(6));
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8">Mit Daten befüllen</h4>
+<div class="outline-text-4" id="text-orgheadline8">
+<p>
+Neben des Standard-Status 'frei' gibt es drei Stadien in denen sich ein Zimmer befinden kann.  
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> status (title, color) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">'belegt'</span>, <span style="color: #0f126e;">'FFFFFF'</span>),
+(<span style="color: #0f126e;">'gesperrt'</span>, <span style="color: #0f126e;">'0000FF'</span>),
+(<span style="color: #0f126e;">'reserviert'</span>, <span style="color: #0f126e;">'FFFF00'</span>);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Status-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-left">Bezeichnung</th>
+<th scope="col" class="org-left">Farbkennung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">belegt</td>
+<td class="org-left">FFFFFF</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">gesperrt</td>
+<td class="org-left">0000FF</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">reserviert</td>
+<td class="org-left">FFFF00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">Belegung-Tabelle erstellen</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">belegung</span> (
+                belegung_id <span style="color: #014500;">INT</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>, 
+                startDate <span style="color: #014500;">DATE</span>, endDate <span style="color: #014500;">DATE</span>, gast_id <span style="color: #014500;">INT</span>, status_id <span style="color: #014500;">INT</span>, zimmer_id <span style="color: #014500;">INT</span>, 
+                <span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span> (gast_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> gast(gast_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>, 
+                <span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span> (status_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> status(status_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>, 
+                <span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span> (zimmer_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> zimmer(zimmer_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>
+);
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">Belegungen</h4>
+<div class="outline-text-4" id="text-orgheadline10">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> belegung (startDate, endDate, gast_id, status_id, zimmer_id) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">'2016-04-04'</span>, <span style="color: #0f126e;">'2016-04-07'</span>, 1, 1, 1),
+(<span style="color: #0f126e;">'2016-04-04'</span>, <span style="color: #0f126e;">'2016-04-07'</span>, 2, 2, 2),
+(<span style="color: #0f126e;">'2016-04-04'</span>, <span style="color: #0f126e;">'2016-04-07'</span>, 3, 3, 2),
+(<span style="color: #0f126e;">'2016-04-04'</span>, <span style="color: #0f126e;">'2016-04-07'</span>, 2, 1, 3);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Belegungs-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-right">startDate</th>
+<th scope="col" class="org-right">endDate</th>
+<th scope="col" class="org-right">gast<sub>id</sub></th>
+<th scope="col" class="org-right">status<sub>id</sub></th>
+<th scope="col" class="org-right">zimmer<sub>id</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2016-04-04</td>
+<td class="org-right">2016-04-07</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">2016-04-04</td>
+<td class="org-right">2016-04-07</td>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">2016-04-04</td>
+<td class="org-right">2016-04-07</td>
+<td class="org-right">3</td>
+<td class="org-right">3</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">2016-04-04</td>
+<td class="org-right">2016-04-07</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+<td class="org-right">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">Questions</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+<p>
+:header-args: :database hotelbuchung :results value
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql">b_a.status_id=2 <span style="color: #490026; font-weight: bold;">or</span>
+b_a.status_id=3;
+<span style="color: #490026; font-weight: bold;">select</span> * <span style="color: #490026; font-weight: bold;">from</span> not_available;
+<span style="color: #490026; font-weight: bold;">create</span> <span style="color: #490026; font-weight: bold;">view</span> <span style="color: #340557; font-weight: bold;">not_available</span> <span style="color: #490026; font-weight: bold;">as</span> <span style="color: #490026; font-weight: bold;">select</span> belegung_id <span style="color: #490026; font-weight: bold;">from</span> belegung <span style="color: #490026; font-weight: bold;">as</span> b <span style="color: #490026; font-weight: bold;">join</span> beleg_art <span style="color: #490026; font-weight: bold;">as</span> b_a <span style="color: #490026; font-weight: bold;">on</span> b.status_id = b_a.status_id <span style="color: #490026; font-weight: bold;">where</span> b_a.status_id=1 <span style="color: #490026; font-weight: bold;">or</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">create</span> <span style="color: #490026; font-weight: bold;">view</span> <span style="color: #340557; font-weight: bold;">available</span> <span style="color: #490026; font-weight: bold;">as</span> <span style="color: #490026; font-weight: bold;">select</span> belegung_id <span style="color: #490026; font-weight: bold;">from</span> zimmer <span style="color: #490026; font-weight: bold;">as</span> b <span style="color: #490026; font-weight: bold;">join</span> beleg_art <span style="color: #490026; font-weight: bold;">as</span> b_a <span style="color: #490026; font-weight: bold;">on</span> b.status_id = b_a.status_id <span style="color: #490026; font-weight: bold;">where</span> b_a.status_id=1 <span style="color: #490026; font-weight: bold;">or</span>
+b_a.status_id=2 <span style="color: #490026; font-weight: bold;">or</span>
+b_a.status_id=3;
+<span style="color: #490026; font-weight: bold;">select</span> * <span style="color: #490026; font-weight: bold;">from</span> not_available;
+</pre>
+</div>
+</div>
+</div>

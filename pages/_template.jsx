@@ -11,6 +11,9 @@ import { config } from 'config'
 // Import styles.
 import 'css/main.css'
 import 'css/github.css'
+import 'react-bootstrap-table/css/react-bootstrap-table-all.min.css'
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'rc-collapse/assets/index.css';
 
 const { rhythm, fontSizeToPx } = typography
 

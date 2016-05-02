@@ -1,0 +1,24 @@
+pre {
+  background: whitesmoke;
+  padding: 1.5rem;
+}
+.demo1-ball {
+  border-radius: 99px;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border: 3px solid white;
+  position: absolute;
+  background-size: 50px;
+}
+.markdown .rc-collapse > .rc-collapse-item > .rc-collapse-header {
+    background-color: #337AB7;
+    color: white;
+}
+.markdown .rc-collapse > .rc-collapse-item > .rc-collapse-header .arrow {
+    border-left-color: white;
+}
+
+.react-bs-table table {
+    font-size: 1.5rem;
+}
