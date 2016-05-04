@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+ <html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=5.0"/><title></title><style id="typography.js">/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  line-height: 1.5em;
+  overflow-y: scroll;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: hsl(0,0%,20%);
+  font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
+/* Make image responsive by default */
+img {
+  max-width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6,hgroup,ul,ol,dl,dd,p,figure,pre,table,fieldset,blockquote,form,noscript,iframe,img,hr {
+margin: 0;
+margin-bottom: 1.5rem;
+padding: 0;
+}
+
+blockquote {
+margin: 1.5rem 3.75rem;
+}
+
+b,strong {
+font-weight: 600
+}
+
+hr {
+background: hsl(0,0%,80%);
+border: none;
+height: 1px;
+margin-bottom: calc(1.5rem - 1px);
+}
+
+ol,ul {
+list-style-position: outside;
+margin-left: 1.5rem;
+}
+
+ul li,ol li {
+padding-left: 0;
+}
+
+code,kbd,pre,samp {
+font-size: 0.85rem;
+line-height: 1.5rem;
+}
+
+table {
+font-size: 1rem;
+line-height: 2.25rem;
+width: 100%;
+}
+
+thead {
+text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+color: hsl(0,0%,20%);
+font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+}
+
+h1 {
+font-size: 1.728rem;
+line-height: 2.25rem;
+}
+
+h2 {
+font-size: 1.44rem;
+line-height: 2.25rem;
+}
+
+h3 {
+font-size: 1.2rem;
+line-height: 1.5rem;
+}
+
+h4 {
+font-size: 1.12924rem;
+line-height: 1.5rem;
+}
+
+h5 {
+font-size: 1.06266rem;
+line-height: 1.5rem;
+}
+
+h6 {
+font-size: 1rem;
+line-height: 1.5rem;
+}
+
+
+</style><link rel="stylesheet" href="/styles.css"/><style>
+                  a {
+                    color: rgb(136,68,153);
+                  }
+                  .ball-0 {
+                    background-image: url(/docs/some-react-code/0.jpg);
+                  }
+                  .ball-1 {
+                    background-image: url(/docs/some-react-code/1.jpg);
+                  }
+                  .ball-2 {
+                    background-image: url(/docs/some-react-code/2.jpg);
+                  }
+                  .ball-3 {
+                    background-image: url(/docs/some-react-code/3.jpg);
+                  }
+                  .ball-4 {
+                    background-image: url(/docs/some-react-code/4.jpg);
+                  }
+                  .ball-5 {
+                    background-image: url(/docs/some-react-code/5.jpg);
+                  }
+                </style></head><body><div id="react-mount"><div data-reactroot="" data-reactid="1" data-react-checksum="1263659437"><div style="background:rgb(136,68,153);color:rgb(243,237,245);margin-bottom:2.25rem;" data-reactid="2"><div style="max-width:960px;margin-left:auto;margin-right:auto;padding:0.75rem;padding-bottom:0.75rem;" data-reactid="3"><div style="padding:0.75rem 0;" data-reactid="4"><div style="float:left;margin-left:0%;margin-right:1.694915254237288%;width:50%;clear:none;font-weight:bold;height:24px;" data-reactid="5"><a style="text-decoration:none;color:rgb(243,237,245);font-size:1.90625rem;" href="/" data-reactid="6">Datenbank-Dokumentation      Zimmerbelegung</a><span style="display:block;clear:both;" data-reactid="7"> </span></div><div style="float:right;margin-left:0%;margin-right:0%;width:66.10169491525423%;clear:none;" data-reactid="8"><a style="background:rgb(109,43,127);color:rgb(232,222,235);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.5rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/source/" data-reactid="9">Sourcecode</a><a style="background:rgb(136,68,153);color:rgb(243,237,245);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.5rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/docs/" data-reactid="10">Documentation</a><span style="display:block;clear:both;" data-reactid="11"> </span></div><span style="display:block;clear:both;" data-reactid="12"> </span></div><span style="display:block;clear:both;" data-reactid="13"> </span></div></div><div style="max-width:960px;margin-left:auto;margin-right:auto;padding:1.5rem 0.75rem;padding-top:0;" data-reactid="14"><div class="markdown" data-reactid="15"><h1 data-reactid="16">Vollständiger Sourcecode</h1><div data-reactid="17">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> DATABASE IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> hotelbuchung;
+USE hotelbuchung;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> <span style="color: #340557; font-weight: bold;">gast</span>(
+        gast_id <span style="color: #014500;">INT</span>(11) AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>, 
+        anrede <span style="color: #014500;">VARCHAR</span>(15),
+        vorname <span style="color: #014500;">VARCHAR</span>(45),
+        nachname <span style="color: #014500;">VARCHAR</span>(45));
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> gast (anrede, vorname, nachname) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">&apos;Herr&apos;</span>, <span style="color: #0f126e;">&apos;Max&apos;</span>, <span style="color: #0f126e;">&apos;Mustermann&apos;</span>),
+(<span style="color: #0f126e;">&apos;Herr&apos;</span>, <span style="color: #0f126e;">&apos;Klaus&apos;</span>, <span style="color: #0f126e;">&apos;Peter&apos;</span>),
+(<span style="color: #0f126e;">&apos;Frau&apos;</span>, <span style="color: #0f126e;">&apos;Lisa&apos;</span>, <span style="color: #0f126e;">&apos;Langfinger&apos;</span>);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> gast_id <span style="color: #490026; font-weight: bold;">as</span> ID, anrede <span style="color: #490026; font-weight: bold;">as</span> Anrede, vorname <span style="color: #490026; font-weight: bold;">as</span> Vorname, nachname <span style="color: #490026; font-weight: bold;">as</span> Nachname <span style="color: #490026; font-weight: bold;">FROM</span> gast;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">zimmer</span> (
+        zimmer_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        bezeichnung <span style="color: #014500;">VARCHAR</span>(45),
+        beschreibung <span style="color: #014500;">VARCHAR</span>(45));
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> zimmer(bezeichnung, beschreibung) <span style="color: #490026; font-weight: bold;">VALUES</span> (<span style="color: #0f126e;">&apos;101&apos;</span>,<span style="color: #0f126e;">&apos;Suite&apos;</span>),
+    (<span style="color: #0f126e;">&apos;102&apos;</span>,<span style="color: #0f126e;">&apos;Abstellkammer&apos;</span>),
+    (<span style="color: #0f126e;">&apos;103&apos;</span>,<span style="color: #0f126e;">&apos;4-Bett&apos;</span>),
+    (<span style="color: #0f126e;">&apos;104&apos;</span>,<span style="color: #0f126e;">&apos;2-Bett&apos;</span>),
+    (<span style="color: #0f126e;">&apos;105&apos;</span>,<span style="color: #0f126e;">&apos;1-Bett&apos;</span>);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> zimmer_id <span style="color: #490026; font-weight: bold;">as</span> ID, bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Bezeichnung, beschreibung <span style="color: #490026; font-weight: bold;">as</span> Beschreibung <span style="color: #490026; font-weight: bold;">FROM</span> zimmer;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">beleg_art</span> (
+        art_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        bezeichnung <span style="color: #014500;">VARCHAR</span>(45),
+        color <span style="color: #014500;">VARCHAR</span>(6));
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> beleg_art (bezeichnung, color) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">&apos;belegt&apos;</span>, <span style="color: #0f126e;">&apos;FFFFFF&apos;</span>),
+(<span style="color: #0f126e;">&apos;gesperrt&apos;</span>, <span style="color: #0f126e;">&apos;0000FF&apos;</span>),
+(<span style="color: #0f126e;">&apos;reserviert&apos;</span>, <span style="color: #0f126e;">&apos;FFFF00&apos;</span>);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> art_id <span style="color: #490026; font-weight: bold;">as</span> ID, bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Bezeichnung, color <span style="color: #490026; font-weight: bold;">as</span> Farbkennung <span style="color: #490026; font-weight: bold;">FROM</span> beleg_art;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">belegung</span>(
+        belegung_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        <span style="color: #490026; font-weight: bold;">start</span> <span style="color: #014500;">DATE</span>,
+        ende <span style="color: #014500;">DATE</span>,
+        gast_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(gast_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> gast(gast_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>,
+        art_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(art_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> beleg_art(art_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>,
+        zimmer_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(zimmer_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> zimmer(zimmer_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span> ) ;
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> belegung (<span style="color: #490026; font-weight: bold;">start</span>, ende, gast_id, art_id, zimmer_id) <span style="color: #490026; font-weight: bold;">VALUES</span>
+    ("2016-01-01","2016-01-07",1,2,1),
+    ("2016-01-01","2016-01-21",2,2,3),
+    ("2016-01-08","2016-01-16",3,1,1),
+    ("2016-01-25","2016-02-02",1,3,1);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> belegung_id <span style="color: #490026; font-weight: bold;">as</span> ID, <span style="color: #490026; font-weight: bold;">start</span>, ende, gast_id, art_id, zimmer_id <span style="color: #490026; font-weight: bold;">FROM</span> belegung;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">belegt</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">&apos;Belegt&apos;</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id <span style="color: #490026; font-weight: bold;">AND</span>
+    belegung.art_id = 1; 
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> belegt;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">reserviert</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">&apos;Reserviert&apos;</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id <span style="color: #490026; font-weight: bold;">AND</span>
+    belegung.art_id = 2;
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> reserviert;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">gesperrt</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">&apos;Gesperrt&apos;</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id
+    <span style="color: #490026; font-weight: bold;">AND</span> belegung.art_id = 3; 
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> gesperrt;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">belegungs_dauer</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> DATEDIFF(belegung.ende, belegung.<span style="color: #490026; font-weight: bold;">start</span>) <span style="color: #490026; font-weight: bold;">as</span> Buchungstage <span style="color: #490026; font-weight: bold;">FROM</span> belegung
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer_id = 1&& <span style="color: #490026; font-weight: bold;">start</span> = "2016-01-01";
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> belegungs_dauer;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">auslastung</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Zimmer,
+    <span style="color: #9e0045;">SUM</span>(DATEDIFF(
+            IF(1=<span style="color: #490026; font-weight: bold;">MONTH</span>(ende), ende, LAST_DAY("2016-01-01")),
+            IF(1=<span style="color: #490026; font-weight: bold;">MONTH</span>(<span style="color: #490026; font-weight: bold;">start</span>), <span style="color: #490026; font-weight: bold;">start</span>, DATE_SUB("2016-01-01",
+                    <span style="color: #014500;">INTERVAL</span> DAYOFMONTH("2016-01-01")-1 <span style="color: #490026; font-weight: bold;">DAY</span>))))
+    <span style="color: #490026; font-weight: bold;">as</span> Buchungstage <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> belegung.zimmer_id = zimmer.zimmer_id <span style="color: #490026; font-weight: bold;">GROUP</span> <span style="color: #490026; font-weight: bold;">BY</span> belegung.zimmer_id;
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> auslastung;
+</pre>
+</div>
+</div><div style="margin-top:50px;" data-reactid="18"><a style="text-decoration:none;" href="/docs/datenbank/" data-reactid="19"><button class="btn btn-success pull-right" data-reactid="20">Datenbank &gt;&gt;</button></a></div></div><span style="display:block;clear:both;" data-reactid="21"> </span></div></div></div><script src="/bundle.js"></script></body></html>
