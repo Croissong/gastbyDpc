@@ -1,0 +1,92 @@
+#+PROPERTY: tangle "./documentation.sql"
+#+OPTIONS: toc:nil num:nil
+#+HTML: <title>Fragestellungen</title>
+#+PROPERTY: header-args :engine mysql :dbuser root :dbpassword root :results silent :database hotelbuchung
+Um an die Daten zu kommen bedient man sich wieder SQL-Befehlen in Form von ~SELECT~'s.
+Mit Hilfe dieser kann man sich genau die Daten, die man haben möchte, filtern lassen und zurückliefern.
+Die Abfragen werden in mit ~CREATE VIEW~ abgespeichert, um sie einfach abrufen zu können.
+* Welche Zimmer sind "reserviert“, „belegt“ oder für eine Reservierung „gesperrt“?
+Für jede Art muss eine SQL – Anweisung erstellt werden.
+Da ein Zimmer auch mehrfach reserviert, belegt oder gesperrt sein kann, verwendet man ~DISTINCT~ um Dopplungen zu vermeiden.
+#+BEGIN_SRC sql
+CREATE VIEW belegt AS
+SELECT DISTINCT zimmer.bezeichnung AS 'Belegt' FROM belegung, zimmer
+WHERE zimmer.zimmer_id = belegung.zimmer_id AND
+    belegung.art_id = 1; 
+#+END_SRC
+#+BEGIN_SRC sql :exports results :results replace value table
+SELECT * from belegt;
+#+END_SRC
+#+ATTR_HTML: :drawer Belegt-View
+#+RESULTS:
+| Belegt |
+|--------|
+|    101 |
+#+HTML: <hr>
+#+BEGIN_SRC sql
+CREATE VIEW reserviert AS
+SELECT DISTINCT zimmer.bezeichnung AS 'Reserviert' FROM belegung, zimmer
+WHERE zimmer.zimmer_id = belegung.zimmer_id AND
+    belegung.art_id = 2;
+#+END_SRC
+#+BEGIN_SRC sql :exports results :results replace value table
+SELECT * from reserviert;
+#+END_SRC
+#+ATTR_HTML: :drawer Reserviert-View
+#+RESULTS:
+| Reserviert |
+|------------|
+|        101 |
+|        103 |
+#+HTML: <hr>
+#+BEGIN_SRC sql
+CREATE VIEW gesperrt AS
+SELECT DISTINCT zimmer.bezeichnung AS 'Gesperrt' FROM belegung, zimmer
+WHERE zimmer.zimmer_id = belegung.zimmer_id
+    AND belegung.art_id = 3; 
+#+END_SRC
+#+BEGIN_SRC sql :exports results :results replace value table
+SELECT * from gesperrt;
+#+END_SRC
+#+ATTR_HTML: :drawer Gesperrt-View
+#+RESULTS:
+| Gesperrt |
+|----------|
+|      101 |
+#+HTML: <hr>
+* Wieviel Tage ist ein Zimmer in Folge „reserviert“ oder „belegt“?
+#+BEGIN_SRC sql
+CREATE VIEW belegungs_dauer AS
+SELECT DATEDIFF(belegung.ende, belegung.start) as Buchungstage FROM belegung
+WHERE zimmer_id = 1&& start = "2016-01-01";
+#+END_SRC
+#+BEGIN_SRC sql :exports results :results replace value table
+SELECT * from belegungs_dauer;
+#+END_SRC
+#+ATTR_HTML: :drawer Belegungs-Dauer-View
+#+RESULTS:
+| Buchungstage |
+|--------------|
+|            6 |
+#+HTML: <hr>
+* Welche Zimmer sind am besten oder am schlechtesten im Monat ausgelastet?
+#+BEGIN_SRC sql
+CREATE VIEW auslastung AS
+SELECT bezeichnung as Zimmer,
+    SUM(DATEDIFF(
+            IF(1=MONTH(ende), ende, LAST_DAY("2016-01-01")),
+            IF(1=MONTH(start), start, DATE_SUB("2016-01-01",
+                    INTERVAL DAYOFMONTH("2016-01-01")-1 DAY))))
+    as Buchungstage FROM belegung, zimmer
+WHERE belegung.zimmer_id = zimmer.zimmer_id GROUP BY belegung.zimmer_id;
+#+END_SRC
+#+BEGIN_SRC sql :exports results :results replace value table
+SELECT * from auslastung;
+#+END_SRC
+#+ATTR_HTML: :drawer Belegungs-Dauer-View
+#+RESULTS:
+| Zimmer | Buchungstage |
+|--------+--------------|
+|    101 |           20 |
+|    103 |           20 |
+

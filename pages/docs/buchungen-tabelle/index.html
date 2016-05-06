@@ -1,0 +1,99 @@
+<title>Belegungs Tabelle</title>
+<p>
+Die Tabelle <b>belegung</b> ist das Verbindungstück zwischen allen Tabellen.
+Hier werden mehrere Fremdschlüssel angelegt. Diese Fremdschlüssel verweisen auf die Primärschlüssel der anderen Tabellen und erzeugen dadurch die Verbindungen.
+</p>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Tabelle erstellen</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">belegung</span>(
+        belegung_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        <span style="color: #490026; font-weight: bold;">start</span> <span style="color: #014500;">DATE</span>,
+        ende <span style="color: #014500;">DATE</span>,
+        gast_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(gast_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> gast(gast_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>,
+        art_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(art_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> beleg_art(art_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>,
+        zimmer_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(zimmer_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> zimmer(zimmer_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span> ) ;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Mit Testdaten befüllen</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> belegung (<span style="color: #490026; font-weight: bold;">start</span>, ende, gast_id, art_id, zimmer_id) <span style="color: #490026; font-weight: bold;">VALUES</span>
+    ("2016-01-01","2016-01-07",1,2,1),
+    ("2016-01-01","2016-01-21",2,2,3),
+    ("2016-01-08","2016-01-16",3,2,1),
+    ("2016-01-25","2016-02-02",1,2,1);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Belegungs-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-right">start</th>
+<th scope="col" class="org-right">ende</th>
+<th scope="col" class="org-right">gast<sub>id</sub></th>
+<th scope="col" class="org-right">art<sub>id</sub></th>
+<th scope="col" class="org-right">zimmer<sub>id</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2016-01-01</td>
+<td class="org-right">2016-01-07</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">2016-01-01</td>
+<td class="org-right">2016-01-21</td>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">2016-01-08</td>
+<td class="org-right">2016-01-16</td>
+<td class="org-right">3</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">2016-01-25</td>
+<td class="org-right">2016-02-02</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>

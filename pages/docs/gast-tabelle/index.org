@@ -1,0 +1,29 @@
+#+PROPERTY: tangle "./documentation.sql"
+#+OPTIONS: toc:nil num:nil
+#+HTML: <title>Gast Tabelle</title>
+#+PROPERTY: header-args :engine mysql :dbuser root :dbpassword root :results silent :database hotelbuchung
+* Tabelle erstellen
+#+BEGIN_SRC sql
+CREATE TABLE gast(
+        gast_id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY, 
+        anrede VARCHAR(15),
+        vorname VARCHAR(45),
+        nachname VARCHAR(45));
+#+END_SRC
+* Mit Testdaten befüllen
+#+BEGIN_SRC sql
+INSERT INTO gast (anrede, vorname, nachname) VALUES
+('Herr', 'Max', 'Mustermann'),
+('Herr', 'Klaus', 'Peter'),
+('Frau', 'Lisa', 'Langfinger');
+#+END_SRC
+#+BEGIN_SRC sql :results replace value table :exports results 
+SELECT gast_id as ID, anrede as Anrede, vorname as Vorname, nachname as Nachname FROM gast;
+#+END_SRC
+#+ATTR_HTML: :drawer Gast-Tabelle
+#+RESULTS:
+| ID | Anrede | Vorname | Nachname   |
+|----+--------+---------+------------|
+|  1 | Herr   | Max     | Mustermann |
+|  2 | Herr   | Klaus   | Peter      |
+|  3 | Frau   | Lisa    | Langfinger |

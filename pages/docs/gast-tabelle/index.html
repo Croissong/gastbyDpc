@@ -1,0 +1,71 @@
+<title>Gast Tabelle</title>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Tabelle erstellen</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> <span style="color: #340557; font-weight: bold;">gast</span>(
+        gast_id <span style="color: #014500;">INT</span>(11) AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>, 
+        anrede <span style="color: #014500;">VARCHAR</span>(15),
+        vorname <span style="color: #014500;">VARCHAR</span>(45),
+        nachname <span style="color: #014500;">VARCHAR</span>(45));
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Mit Testdaten befüllen</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> gast (anrede, vorname, nachname) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">'Herr'</span>, <span style="color: #0f126e;">'Max'</span>, <span style="color: #0f126e;">'Mustermann'</span>),
+(<span style="color: #0f126e;">'Herr'</span>, <span style="color: #0f126e;">'Klaus'</span>, <span style="color: #0f126e;">'Peter'</span>),
+(<span style="color: #0f126e;">'Frau'</span>, <span style="color: #0f126e;">'Lisa'</span>, <span style="color: #0f126e;">'Langfinger'</span>);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Gast-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-left">Anrede</th>
+<th scope="col" class="org-left">Vorname</th>
+<th scope="col" class="org-left">Nachname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Herr</td>
+<td class="org-left">Max</td>
+<td class="org-left">Mustermann</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Herr</td>
+<td class="org-left">Klaus</td>
+<td class="org-left">Peter</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Frau</td>
+<td class="org-left">Lisa</td>
+<td class="org-left">Langfinger</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>

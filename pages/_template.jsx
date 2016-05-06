@@ -25,7 +25,7 @@ module.exports = React.createClass({
   },
   render () {
     const docsActive = includes(this.props.location.pathname, '/docs/')
-    const examplesActive = includes(this.props.location.pathname, '/examples/')
+    const examplesActive = includes(this.props.location.pathname, '/source/')
 
     return (
       <div>
@@ -52,63 +52,54 @@ module.exports = React.createClass({
               <Span
                 columns={4}
                 style={{
-                  height: 24, // Ugly hack. How better to constrain height of div?
-                }}
+                    width: '50%',
+                    fontWeight: 'bold',
+                    height: 24, // Ugly hack. How better to constrain height of div?
+                  }}
               >
                 <Link
-                  to={prefixLink('/')}
-                  style={{
-                    textDecoration: 'none',
-                    color: colors.fg,
-                    fontSize: fontSizeToPx('25.5px').fontSize,
-                  }}
+                    to={prefixLink('/')}
+                    style={{
+                        textDecoration: 'none',
+                        color: colors.fg,
+                        fontSize: fontSizeToPx('30.5px').fontSize,
+                      }}
                 >
                   {config.siteTitle}
                 </Link>
               </Span>
-              <Span columns={8} last>
-                <a
-                  style={{
-                    float: 'right',
-                    color: colors.fg,
-                    textDecoration: 'none',
-                    marginLeft: rhythm(1/2),
-                  }}
-                  href="https://github.com/gatsbyjs/gatsby"
-                >
-                  Github
-                </a>
+              <Span columns={8} last> 
                 <Link
-                  to={prefixLink('/examples/')}
-                  style={{
-                    background: examplesActive ? activeColors.bg : colors.bg,
-                    color: examplesActive ? activeColors.fg : colors.fg,
-                    float: 'right',
-                    textDecoration: 'none',
-                    paddingLeft: rhythm(1/2),
-                    paddingRight: rhythm(1/2),
-                    paddingBottom: rhythm(1),
-                    marginBottom: rhythm(-1),
-                    paddingTop: rhythm(1),
-                    marginTop: rhythm(-1),
-                  }}
+                    to={prefixLink('/source/')}
+                    style={{
+                        background: examplesActive ? activeColors.bg : colors.bg,
+                        color: examplesActive ? activeColors.fg : colors.fg,
+                        float: 'right',
+                        textDecoration: 'none',
+                        paddingLeft: rhythm(1/2),
+                        paddingRight: rhythm(1/2),
+                        paddingBottom: rhythm(1),
+                        marginBottom: rhythm(-1),
+                        paddingTop: rhythm(1),
+                        marginTop: rhythm(-1),
+                      }}
                 >
-                  Examples
+                  Sourcecode
                 </Link>
                 <Link
-                  to={prefixLink('/docs/')}
-                  style={{
-                    background: docsActive ? activeColors.bg : colors.bg,
-                    color: docsActive ? activeColors.fg : colors.fg,
-                    float: 'right',
-                    textDecoration: 'none',
-                    paddingLeft: rhythm(1/2),
-                    paddingRight: rhythm(1/2),
-                    paddingBottom: rhythm(1),
-                    marginBottom: rhythm(-1),
-                    paddingTop: rhythm(1),
-                    marginTop: rhythm(-1),
-                  }}
+                    to={prefixLink('/docs/')}
+                    style={{
+                        background: docsActive ? activeColors.bg : colors.bg,
+                        color: docsActive ? activeColors.fg : colors.fg,
+                        float: 'right',
+                        textDecoration: 'none',
+                        paddingLeft: rhythm(1/2),
+                        paddingRight: rhythm(1/2),
+                        paddingBottom: rhythm(1),
+                        marginBottom: rhythm(-1),
+                        paddingTop: rhythm(1),
+                        marginTop: rhythm(-1),
+                      }}
                 >
                   Documentation
                 </Link>
@@ -117,11 +108,11 @@ module.exports = React.createClass({
           </Container>
         </div>
         <Container
-          style={{
-            maxWidth: 960,
-            padding: `${rhythm(1)} ${rhythm(1/2)}`,
-            paddingTop: 0,
-          }}
+            style={{
+                maxWidth: 960,
+                padding: `${rhythm(1)} ${rhythm(1/2)}`,
+                paddingTop: 0,
+              }}
         >
           {this.props.children}
         </Container>

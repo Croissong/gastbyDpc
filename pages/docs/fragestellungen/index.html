@@ -1,0 +1,170 @@
+<title>Fragestellungen</title>
+<p>
+Um an die Daten zu kommen bedient man sich wieder SQL-Befehlen in Form von <code>SELECT</code>'s.
+Mit Hilfe dieser kann man sich genau die Daten, die man haben möchte, filtern lassen und zurückliefern.
+Die Abfragen werden in mit <code>CREATE VIEW</code> abgespeichert, um sie einfach abrufen zu können.
+</p>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Welche Zimmer sind "reserviert“, „belegt“ oder für eine Reservierung „gesperrt“?</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+Für jede Art muss eine SQL – Anweisung erstellt werden.
+Da ein Zimmer auch mehrfach reserviert, belegt oder gesperrt sein kann, verwendet man <code>DISTINCT</code> um Dopplungen zu vermeiden.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">belegt</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">'Belegt'</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id <span style="color: #490026; font-weight: bold;">AND</span>
+    belegung.art_id = 1;
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Belegt-View">
+
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Belegt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">101</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">reserviert</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">'Reserviert'</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id <span style="color: #490026; font-weight: bold;">AND</span>
+    belegung.art_id = 2;
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Reserviert-View">
+
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Reserviert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">101</td>
+</tr>
+
+<tr>
+<td class="org-right">103</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">gesperrt</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">'Gesperrt'</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id
+    <span style="color: #490026; font-weight: bold;">AND</span> belegung.art_id = 3;
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Gesperrt-View">
+
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Gesperrt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">101</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Wieviel Tage ist ein Zimmer in Folge „reserviert“ oder „belegt“?</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">belegungs_dauer</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> DATEDIFF(belegung.ende, belegung.<span style="color: #490026; font-weight: bold;">start</span>) <span style="color: #490026; font-weight: bold;">as</span> Buchungstage <span style="color: #490026; font-weight: bold;">FROM</span> belegung
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer_id = 1&amp;&amp; <span style="color: #490026; font-weight: bold;">start</span> = "2016-01-01";
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Belegungs-Dauer-View">
+
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Buchungstage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">6</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Welche Zimmer sind am besten oder am schlechtesten im Monat ausgelastet?</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">auslastung</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Zimmer,
+    <span style="color: #9e0045;">SUM</span>(DATEDIFF(
+            IF(1=<span style="color: #490026; font-weight: bold;">MONTH</span>(ende), ende, LAST_DAY("2016-01-01")),
+            IF(1=<span style="color: #490026; font-weight: bold;">MONTH</span>(<span style="color: #490026; font-weight: bold;">start</span>), <span style="color: #490026; font-weight: bold;">start</span>, DATE_SUB("2016-01-01",
+                    <span style="color: #014500;">INTERVAL</span> DAYOFMONTH("2016-01-01")-1 <span style="color: #490026; font-weight: bold;">DAY</span>))))
+    <span style="color: #490026; font-weight: bold;">as</span> Buchungstage <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> belegung.zimmer_id = zimmer.zimmer_id <span style="color: #490026; font-weight: bold;">GROUP</span> <span style="color: #490026; font-weight: bold;">BY</span> belegung.zimmer_id;
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Belegungs-Dauer-View">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Zimmer</th>
+<th scope="col" class="org-right">Buchungstage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">101</td>
+<td class="org-right">20</td>
+</tr>
+
+<tr>
+<td class="org-right">103</td>
+<td class="org-right">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>

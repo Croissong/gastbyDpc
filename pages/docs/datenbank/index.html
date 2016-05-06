@@ -1,0 +1,37 @@
+<title>Datenbank</title>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Erstellen und auswählen der Datenbank <b>hotelbuchung</b></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> DATABASE IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> hotelbuchung;
+USE hotelbuchung;
+</pre>
+</div>
+<p>
+Als erstes legt man die Datenbank auf dem Server an und wählt sie zur Benutzung aus.
+Der Zusatz <code>IF NOT EXISTS</code> dient dazu, bei wiederholender Ausführung Fehler zu vermeiden, falls die jeweiligen Objekte bereits erstellt wurden.
+Zur Löschung der Datenbank kann man <code>DROP DATABASE hotelbuchung</code> verwenden.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Befüllen der Datenbank</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+Nun befüllt man die Datenbank mit mehreren Tabellen, welche Attribute besitzen, mittels des <code>CREATE</code>-Befehls.
+Im selben Schritt definiert man auch die Primär- und Fremdschlüssel, um die Beziehungen zwischen den Tabellen darzustellen. Außerdem legt man fest was passieren soll, wenn ein Objekt gelöscht wird. Die Attribute bekommen einen Typ zugewiesen, welcher zum Beispiel festlegt, wie viele Zeichen gespeichert werden können.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Befüllen der Tabellen</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+Anschließend werden die Tabellen jeweils mit Testdaten befüllt.
+Dazu wird der <code>INSERT</code>-Befehl genutzt.
+Man muss nur die Tabelle mit ihren Spalten definieren und Werte hinzufügen. Die Id's zählen automatisch hoch, da <code>AUTO_INCREMENT</code> gesetzt ist.
+</p>
+</div>
+</div>

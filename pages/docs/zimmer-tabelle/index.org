@@ -1,0 +1,31 @@
+#+PROPERTY: tangle "./documentation.sql"
+#+OPTIONS: toc:nil num:nil
+#+HTML: <title>Zimmer Tabelle</title>
+#+PROPERTY: header-args :engine mysql :dbuser root :dbpassword root :results silent :database hotelbuchung
+* Tabelle erstellen
+#+BEGIN_SRC sql
+CREATE TABLE IF NOT EXISTS zimmer (
+        zimmer_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        bezeichnung VARCHAR(45),
+        beschreibung VARCHAR(45));
+#+END_SRC
+* Mit Testdaten befüllen
+#+BEGIN_SRC sql
+INSERT INTO zimmer(bezeichnung, beschreibung) VALUES ('101','Suite'),
+    ('102','Abstellkammer'),
+    ('103','4-Bett'),
+    ('104','2-Bett'),
+    ('105','1-Bett');
+#+END_SRC
+#+BEGIN_SRC sql :results replace value table :exports results 
+SELECT zimmer_id as ID, bezeichnung as Bezeichnung, beschreibung as Beschreibung FROM zimmer;
+#+END_SRC
+#+ATTR_HTML: :drawer Zimmer-Tabelle
+#+RESULTS:
+| ID | Bezeichnung | Beschreibung  |
+|----+-------------+---------------|
+|  1 |         101 | Suite         |
+|  2 |         102 | Abstellkammer |
+|  3 |         103 | 4-Bett        |
+|  4 |         104 | 2-Bett        |
+|  5 |         105 | 1-Bett        |

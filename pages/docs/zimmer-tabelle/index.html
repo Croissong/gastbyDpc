@@ -1,0 +1,77 @@
+<title>Zimmer Tabelle</title>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Tabelle erstellen</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">zimmer</span> (
+        zimmer_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        bezeichnung <span style="color: #014500;">VARCHAR</span>(45),
+        beschreibung <span style="color: #014500;">VARCHAR</span>(45));
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Mit Testdaten befüllen</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> zimmer(bezeichnung, beschreibung) <span style="color: #490026; font-weight: bold;">VALUES</span> (<span style="color: #0f126e;">'101'</span>,<span style="color: #0f126e;">'Suite'</span>),
+    (<span style="color: #0f126e;">'102'</span>,<span style="color: #0f126e;">'Abstellkammer'</span>),
+    (<span style="color: #0f126e;">'103'</span>,<span style="color: #0f126e;">'4-Bett'</span>),
+    (<span style="color: #0f126e;">'104'</span>,<span style="color: #0f126e;">'2-Bett'</span>),
+    (<span style="color: #0f126e;">'105'</span>,<span style="color: #0f126e;">'1-Bett'</span>);
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" drawer="Zimmer-Tabelle">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-right">Bezeichnung</th>
+<th scope="col" class="org-left">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">101</td>
+<td class="org-left">Suite</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">102</td>
+<td class="org-left">Abstellkammer</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">103</td>
+<td class="org-left">4-Bett</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">104</td>
+<td class="org-left">2-Bett</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">105</td>
+<td class="org-left">1-Bett</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>

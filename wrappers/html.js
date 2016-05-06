@@ -16,7 +16,8 @@ module.exports = React.createClass({
     const currIdx = config.docPages.findIndex(p => p === this.props.route.path); 
     var nextPath = config.docPages[currIdx + 1];
     var nextTitle = _.get(this.props.route.pages.find(p => p.path === nextPath), 'data.title');
-    console.log(nextTitle);
+    var prevPath = config.docPages[currIdx - 1];
+    var prevTitle = _.get(this.props.route.pages.find(p => p.path === prevPath), 'data.title'); 
     const post = this.props.route.page.data ; 
     return (
       <div className="markdown">
@@ -28,16 +29,27 @@ module.exports = React.createClass({
              element = JSON.parse(element); 
              return reactComponents[element.type](i, element.data);
            }
-         })}
-        {nextPath && <Link
-                         to={prefixLink(nextPath)}
-                         style={{
-                             textDecoration: 'none',
-                           }}
-                     >
-          <button className="btn btn-primary">{nextTitle}</button>
-        </Link> 
-        }
+        })}
+      <div style={{marginTop: '50px'}}>
+      {prevPath && <Link
+                       to={prefixLink(prevPath)}
+                       style={{
+                           textDecoration: 'none',
+                         }}
+                   >
+        <button className="btn btn-success">{'<< ' + prevTitle}</button>
+      </Link> 
+      }
+      {nextPath && <Link
+                       to={prefixLink(nextPath)}
+                       style={{
+                           textDecoration: 'none',
+                         }}
+                   >
+        <button className="btn btn-success pull-right">{nextTitle + ' >>'}</button>
+      </Link> 
+      }
+      </div>
       </div>
     )
   }

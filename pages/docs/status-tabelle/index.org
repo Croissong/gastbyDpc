@@ -1,0 +1,29 @@
+#+PROPERTY: tangle "./documentation.sql"
+#+OPTIONS: toc:nil num:nil
+#+HTML: <title>Beleg-Art Tabelle</title>
+#+PROPERTY: header-args :engine mysql :dbuser root :dbpassword root :results silent :database hotelbuchung
+* Tabelle erstellen
+#+BEGIN_SRC sql
+CREATE TABLE IF NOT EXISTS beleg_art (
+        art_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        bezeichnung VARCHAR(45),
+        color VARCHAR(6));
+#+END_SRC
+* Mit Testdaten befüllen
+Neben des Standard-Status 'frei' gibt es drei Stadien in denen sich ein Zimmer befinden kann.  
+#+BEGIN_SRC sql
+INSERT INTO beleg_art (bezeichnung, color) VALUES
+('belegt', 'FFFFFF'),
+('gesperrt', '0000FF'),
+('reserviert', 'FFFF00');
+#+END_SRC
+#+BEGIN_SRC sql :results replace value table :exports results 
+SELECT art_id as ID, bezeichnung as Bezeichnung, color as Farbkennung FROM beleg_art;
+#+END_SRC
+#+ATTR_HTML: :drawer Belegt-Art-Tabelle
+#+RESULTS:
+| ID | Bezeichnung | Farbkennung |
+|----+-------------+-------------|
+|  1 | belegt      | FFFFFF      |
+|  2 | gesperrt    | 0000FF      |
+|  3 | reserviert  | FFFF00      |

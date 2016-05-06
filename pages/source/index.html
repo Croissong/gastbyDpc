@@ -1,0 +1,94 @@
+<title>Vollständiger Sourcecode</title>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #490026; font-weight: bold;">CREATE</span> DATABASE IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> hotelbuchung;
+USE hotelbuchung;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> <span style="color: #340557; font-weight: bold;">gast</span>(
+        gast_id <span style="color: #014500;">INT</span>(11) AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>, 
+        anrede <span style="color: #014500;">VARCHAR</span>(15),
+        vorname <span style="color: #014500;">VARCHAR</span>(45),
+        nachname <span style="color: #014500;">VARCHAR</span>(45));
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> gast (anrede, vorname, nachname) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">'Herr'</span>, <span style="color: #0f126e;">'Max'</span>, <span style="color: #0f126e;">'Mustermann'</span>),
+(<span style="color: #0f126e;">'Herr'</span>, <span style="color: #0f126e;">'Klaus'</span>, <span style="color: #0f126e;">'Peter'</span>),
+(<span style="color: #0f126e;">'Frau'</span>, <span style="color: #0f126e;">'Lisa'</span>, <span style="color: #0f126e;">'Langfinger'</span>);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> gast_id <span style="color: #490026; font-weight: bold;">as</span> ID, anrede <span style="color: #490026; font-weight: bold;">as</span> Anrede, vorname <span style="color: #490026; font-weight: bold;">as</span> Vorname, nachname <span style="color: #490026; font-weight: bold;">as</span> Nachname <span style="color: #490026; font-weight: bold;">FROM</span> gast;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">zimmer</span> (
+        zimmer_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        bezeichnung <span style="color: #014500;">VARCHAR</span>(45),
+        beschreibung <span style="color: #014500;">VARCHAR</span>(45));
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> zimmer(bezeichnung, beschreibung) <span style="color: #490026; font-weight: bold;">VALUES</span> (<span style="color: #0f126e;">'101'</span>,<span style="color: #0f126e;">'Suite'</span>),
+    (<span style="color: #0f126e;">'102'</span>,<span style="color: #0f126e;">'Abstellkammer'</span>),
+    (<span style="color: #0f126e;">'103'</span>,<span style="color: #0f126e;">'4-Bett'</span>),
+    (<span style="color: #0f126e;">'104'</span>,<span style="color: #0f126e;">'2-Bett'</span>),
+    (<span style="color: #0f126e;">'105'</span>,<span style="color: #0f126e;">'1-Bett'</span>);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> zimmer_id <span style="color: #490026; font-weight: bold;">as</span> ID, bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Bezeichnung, beschreibung <span style="color: #490026; font-weight: bold;">as</span> Beschreibung <span style="color: #490026; font-weight: bold;">FROM</span> zimmer;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">beleg_art</span> (
+        art_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        bezeichnung <span style="color: #014500;">VARCHAR</span>(45),
+        color <span style="color: #014500;">VARCHAR</span>(6));
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> beleg_art (bezeichnung, color) <span style="color: #490026; font-weight: bold;">VALUES</span>
+(<span style="color: #0f126e;">'belegt'</span>, <span style="color: #0f126e;">'FFFFFF'</span>),
+(<span style="color: #0f126e;">'gesperrt'</span>, <span style="color: #0f126e;">'0000FF'</span>),
+(<span style="color: #0f126e;">'reserviert'</span>, <span style="color: #0f126e;">'FFFF00'</span>);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> art_id <span style="color: #490026; font-weight: bold;">as</span> ID, bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Bezeichnung, color <span style="color: #490026; font-weight: bold;">as</span> Farbkennung <span style="color: #490026; font-weight: bold;">FROM</span> beleg_art;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">TABLE</span> IF <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">EXISTS</span> <span style="color: #340557; font-weight: bold;">belegung</span>(
+        belegung_id <span style="color: #014500;">INT</span>(11) <span style="color: #490026; font-weight: bold;">NOT</span> <span style="color: #490026; font-weight: bold;">NULL</span> AUTO_INCREMENT <span style="color: #490026; font-weight: bold;">PRIMARY</span> <span style="color: #490026; font-weight: bold;">KEY</span>,
+        <span style="color: #490026; font-weight: bold;">start</span> <span style="color: #014500;">DATE</span>,
+        ende <span style="color: #014500;">DATE</span>,
+        gast_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(gast_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> gast(gast_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>,
+        art_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(art_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> beleg_art(art_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span>,
+        zimmer_id <span style="color: #014500;">INT</span>(11),<span style="color: #490026; font-weight: bold;">FOREIGN</span> <span style="color: #490026; font-weight: bold;">KEY</span>(zimmer_id) <span style="color: #490026; font-weight: bold;">REFERENCES</span> zimmer(zimmer_id) <span style="color: #490026; font-weight: bold;">ON</span> <span style="color: #490026; font-weight: bold;">DELETE</span> <span style="color: #490026; font-weight: bold;">CASCADE</span> ) ;
+
+<span style="color: #490026; font-weight: bold;">INSERT</span> <span style="color: #490026; font-weight: bold;">INTO</span> belegung (<span style="color: #490026; font-weight: bold;">start</span>, ende, gast_id, art_id, zimmer_id) <span style="color: #490026; font-weight: bold;">VALUES</span>
+    ("2016-01-01","2016-01-07",1,2,1),
+    ("2016-01-01","2016-01-21",2,2,3),
+    ("2016-01-08","2016-01-16",3,1,1),
+    ("2016-01-25","2016-02-02",1,3,1);
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> belegung_id <span style="color: #490026; font-weight: bold;">as</span> ID, <span style="color: #490026; font-weight: bold;">start</span>, ende, gast_id, art_id, zimmer_id <span style="color: #490026; font-weight: bold;">FROM</span> belegung;
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">belegt</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">'Belegt'</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id <span style="color: #490026; font-weight: bold;">AND</span>
+    belegung.art_id = 1; 
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> belegt;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">reserviert</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">'Reserviert'</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id <span style="color: #490026; font-weight: bold;">AND</span>
+    belegung.art_id = 2;
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> reserviert;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">gesperrt</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> <span style="color: #490026; font-weight: bold;">DISTINCT</span> zimmer.bezeichnung <span style="color: #490026; font-weight: bold;">AS</span> <span style="color: #0f126e;">'Gesperrt'</span> <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer.zimmer_id = belegung.zimmer_id
+    <span style="color: #490026; font-weight: bold;">AND</span> belegung.art_id = 3; 
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> gesperrt;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">belegungs_dauer</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> DATEDIFF(belegung.ende, belegung.<span style="color: #490026; font-weight: bold;">start</span>) <span style="color: #490026; font-weight: bold;">as</span> Buchungstage <span style="color: #490026; font-weight: bold;">FROM</span> belegung
+<span style="color: #490026; font-weight: bold;">WHERE</span> zimmer_id = 1&amp;&amp; <span style="color: #490026; font-weight: bold;">start</span> = "2016-01-01";
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> belegungs_dauer;
+
+<span style="color: #490026; font-weight: bold;">CREATE</span> <span style="color: #490026; font-weight: bold;">VIEW</span> <span style="color: #340557; font-weight: bold;">auslastung</span> <span style="color: #490026; font-weight: bold;">AS</span>
+<span style="color: #490026; font-weight: bold;">SELECT</span> bezeichnung <span style="color: #490026; font-weight: bold;">as</span> Zimmer,
+    <span style="color: #9e0045;">SUM</span>(DATEDIFF(
+            IF(1=<span style="color: #490026; font-weight: bold;">MONTH</span>(ende), ende, LAST_DAY("2016-01-01")),
+            IF(1=<span style="color: #490026; font-weight: bold;">MONTH</span>(<span style="color: #490026; font-weight: bold;">start</span>), <span style="color: #490026; font-weight: bold;">start</span>, DATE_SUB("2016-01-01",
+                    <span style="color: #014500;">INTERVAL</span> DAYOFMONTH("2016-01-01")-1 <span style="color: #490026; font-weight: bold;">DAY</span>))))
+    <span style="color: #490026; font-weight: bold;">as</span> Buchungstage <span style="color: #490026; font-weight: bold;">FROM</span> belegung, zimmer
+<span style="color: #490026; font-weight: bold;">WHERE</span> belegung.zimmer_id = zimmer.zimmer_id <span style="color: #490026; font-weight: bold;">GROUP</span> <span style="color: #490026; font-weight: bold;">BY</span> belegung.zimmer_id;
+
+<span style="color: #490026; font-weight: bold;">SELECT</span> * <span style="color: #490026; font-weight: bold;">from</span> auslastung;
+</pre>
+</div>
